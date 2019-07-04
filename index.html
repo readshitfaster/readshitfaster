@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Read Shit Faster</title>
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="app.css" />
+    </head>
+    <body class="disable-scrollbars">
+        <div id="container">
+            <span style="vertical-align:middle;"><h1>Read
+              <input type="image" src="poop.png" onclick="randomArticle()" id="random-article" style="width:5%;"/>
+              Faster</h1>
+            </span>
+            <textarea class="disable-scrollbars" id="readable" style="border-radius:10px; border:none;">Oh? So you want to read shit faster whilst still being able to comprehend everything you read? Well guess what, your mind is incredible and you can read a lot faster than you think. The average reader can read about 200 WPM with about 60% comprehension, but that's if you read left to right. If you read something one word at a time instead without moving your eyes, you can increase your WPM without losing your comprehension! Don't believe it? Go ahead and click the "Read!" button below :)
+            </textarea>
+
+            <div id="reading-screen">
+                <div id="word"></div>
+                <input id="progress" type="range" />
+            </div>
+            <div id="options">
+                <div class="row">
+                    <span id="wpm" style="margin-top:3px;">WPM:</span>
+                    <input id="reading-speed" type="number" value="225" step="25" min="1"/>
+                    <span id="text-info"></span>
+                </div>
+            </div>
+
+            <div style="margin: 0 auto; text-align:center;">
+              <a class="btn btn-1" id="start">Read</a>
+              <a class="btn btn-2" id="new">New text</a>
+            </div>
+
+        </div>
+        <br>
+        <footer style="text-align:center; vertical-align:middle;">
+          made with <img src="poop.png" style="width:2%"> by <a href="https://twitter.com/sakofchit" style="color:white;">sakun</a>
+        </footer>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="jquery-1.8.3.min.js"><\/script>')</script>
+        <script src="app.js"></script>
+    </body>
+</html>
