@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Gloria+Hallelujah);
+
 body {
     background-color: #303030;
     color: #ddd;
@@ -18,6 +20,60 @@ em {
     font-weight: normal;
     color: #4BA9A9;
 }
+small {
+  font-size:15px;
+}
+/*disable on mobile*/
+@media screen and (max-width: 600px) {
+    .hide-on-mobile { display: none; }
+}
+/*sticky note*/
+.note {
+  width: 10em;
+  min-height: 8em;
+  background: #f8de59;
+  transform: translateX(-50%);
+  float:right;
+  padding:5px;
+  margin-top:20px;
+}
+.note:before {
+  content: "";
+  position: absolute;
+  right: 2em;
+  bottom: -2em;
+  left: 0;
+  border: 1em solid #f8de59;
+  z-index: -1;
+}
+.note:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -2em;
+  border-width: 2em 2em 0 0;
+  border-style: solid;
+  border-color: #d69722 transparent;
+  filter: (-4px 5px 9px rgba(0, 0, 0, 0.5));
+}
+
+.sticky-note {
+  font-size: .8em;
+  font-family:Gloria Hallelujah;
+  background: transparent;
+  width: 8.4em;
+  height: 5.8em;
+  margin: 20% 0.8em 0 0.8em;
+  padding: 5px;
+  border: 0;
+  overflow: hidden;
+  letter-spacing: -1px;
+  outline-style: none;
+  resize: none;
+  color:black;
+}
+
+
 /* Scrollbar Styling */
 
 .disable-scrollbars::-webkit-scrollbar {
@@ -111,6 +167,9 @@ em {
 #new {
     display: none;
 }
+#restart{
+  display:none;
+}
 .btn {
   margin: 10px;
    font-size: 20px;
@@ -145,6 +204,10 @@ em {
 
 .btn-2 {background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%)}
 .btn-2:hover { background-position: right center; }
+
+.btn-3 {background-image: linear-gradient(to right, #f28080 0%, #ffb3b3 51%, #a12020 100%)}
+.btn-3:hover { background-position: right center; }
+
 
 li {
     margin-left: 30px;

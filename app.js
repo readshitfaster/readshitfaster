@@ -49,6 +49,13 @@ function start() {
     increments = window.setInterval(flashWords, interval, stonks);
     $('#start').html('Pause');
     $('body').data('reading', true);
+
+    window.addEventListener("keydown", function(e) {
+    // space and arrow keys
+    if([37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+  }, false);
 }
 function stop() {
     window.clearInterval(increments);
@@ -74,6 +81,7 @@ function flashWords(array) {
 function savesettings() {
     localStorage.setItem('settings', JSON.stringify(settings));
 }
+
 //generates a random article from one of these 3
 function randomArticle() {
   idArray = new Array()
@@ -88,6 +96,13 @@ function randomArticle() {
 
   document.getElementById("readable").innerHTML = idArray[randomParagraph + 1];
 }
+//make sticky note fade away on click
+$(document).ready(function(){
+  $(".fade").click(function(){
+    $("#hideSticky").fadeOut();
+  });
+});
+
 $(document).ready(function() {
     if(localStorage.getItem('settings') === null) {
         localStorage.setItem('settings', JSON.stringify(settings));
@@ -96,6 +111,7 @@ $(document).ready(function() {
     }
     $('body').data({'reading': false, 'prepared': false});
     prepare($('#readable').val());
+
 
     $('#start').on('click', function() {
         var data = $('body').data();
@@ -111,7 +127,7 @@ $(document).ready(function() {
             }
             $('#readable').fadeOut(250, function() {
                 start();
-                $('#reading-screen, #new').fadeIn(250);
+                $('#reading-screen, #new, #restart').fadeIn(250);
             });
             $('h1').animate({height: 0, opacity: 0}, 500);
             $('#other').fadeOut(500);
@@ -120,6 +136,18 @@ $(document).ready(function() {
         } else {
             stop();
         }
+    });
+
+    $('#restart').on('click', function() {
+      if($('body').data().reading === true) {
+          if(readIndex < 7) {
+              readIndex = 0;
+          } else {
+              readIndex = readIndex - readIndex;
+          }
+          $('#word').html(chunks[readIndex].text);
+          $('#progress').val(readIndex);
+      }
     });
 
     $('#readable').on('keyup', function() {
@@ -154,14 +182,48 @@ $(document).ready(function() {
             start();
         }
     });
+    //key controls
+        $('body').on('keyup', function(e) {
+            console.log(e.keyCode)
+            if($('#readable').is(':focus')) {
+                return false;
+            }
+            //spacebar will pause/play
+            if(e.keyCode == 32) {
+                if($('body').data('reading') === true) {
+                    stop();
+                } else {
+                    start();
+                }
+            //up arrow increases wpm by 5
+            } else if(e.keyCode == 38) {
+                $('#reading-speed').val(settings.speed + 5).trigger('change');
+            //down arrow decreases wpm by 5
+            } else if(e.keyCode == 40) {
+                $('#reading-speed').val(settings.speed - 5).trigger('change');
+            //backspace left arrow, goes back 7 words
+            } else if(e.keyCode == 8 || e.keyCode == 37) {
+                if($('body').data().reading === true) {
+                    if(readIndex < 7) {
+                        readIndex = 0;
+                    } else {
+                        readIndex = readIndex - 7;
+                    }
+                    $('#word').html(chunks[readIndex].text);
+                    $('#progress').val(readIndex);
+                }
+
+            }
+        });
 
     $('#new').on('click', function() {
         $('#reading-screen').hide();
+        $('#restart').fadeOut();
         $('#readable, #other, #random-article').fadeIn(500);
         $('h1').animate({height: '26px', opacity: 1}, 500);
         $(this).fadeOut(500);
         if($('body').data('reading') === true) {
             stop();
         }
-    });
+    })
 });

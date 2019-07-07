@@ -3,16 +3,27 @@
     <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta name="description" content="Read articles and text faster, increase your gross words per minute">
-      <meta name="keywords" content="articles,read,faster,wpm,words per minute,comprehension,reading,speed read,fast    read,chrome,readable">
+      <meta name="keywords" content="articles,read,faster,wpm,words per minute,comprehension,reading,speed read,fast read,chrome,readable">
       <meta name="author" content="Sakun Acharige">
-    
+
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
       <title>Read Shit Faster</title>
         <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="style.css"/>
     </head>
     <body class="disable-scrollbars">
+
+      <div class="note hide-on-mobile fade" id="hideSticky">
+        <span name="note" spellcheck="false" class="sticky-note">
+          <strong>New!</strong> Just added key-controls!<br>
+          &bull; <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18 9v4H6V9H4v6h16V9z"/></svg> to Pause / Play<br>
+          &bull; <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 11H6.83l3.58-3.59L9 6l-6 6 6 6 1.41-1.41L6.83 13H21z"/></svg> to go back 7 words<br>
+          &bull; <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg> to increase WPM by 5<br>
+          &bull; <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#010101" d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/></svg>to decrease WPM by 5<br>
+          * <span style="font-size:10px">click to make this go away</span>
+        </span>
+      </div>
         <div id="container">
             <span style="vertical-align:middle;"><h1>Read
               <input type="image" src="poop.png" onclick="randomArticle()" id="random-article" style="width:5%;"/>
@@ -31,17 +42,21 @@
                     <input id="reading-speed" type="number" value="225" step="25" min="1"/>
                     <span id="text-info"></span>
                 </div>
+
             </div>
 
             <div style="margin: 0 auto; text-align:center;">
               <a class="btn btn-1" id="start">Read</a>
+              <a class="btn btn-3" id="restart" style="border-radius:30px;"><img style="width:17px;" src="restart.png"/></a>
               <a class="btn btn-2" id="new">New text</a>
             </div>
 
         </div>
         <br>
         <footer style="text-align:center; vertical-align:middle;">
-          made with <img src="poop.png" style="width:2%"> by <a href="https://twitter.com/sakofchit" style="color:white;">sakun</a>
+          made with <img src="poop.png" style="width:2%"> by <a href="https://twitter.com/sakofchit" style="color:gold;">sakun</a><br>
+          <a style="color:white; font-size:10px;" href="changelog">Changelog</a><br>
+          <a href="https://www.producthunt.com/posts/read-faster?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-read-faster" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=160387&theme=dark&period=daily" alt="Read 💩 Faster - Speed read articles w/o compromising your comprehension | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
         </footer>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="jquery-1.8.3.min.js"><\/script>')</script>
